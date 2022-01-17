@@ -46,6 +46,47 @@ class LinkedList:
 
 		# Move the head to point to new Node
 		self.head = new_node
+	    def get_position(self, position):
+        current = self.head
+        counter = 1
+        if position < 1:
+            return None
+        while current and counter <= position:
+            if counter==position:
+                return current
+            current= current.next
+            counter +=1
+        return None
+
+    def get_position1(self, position):
+        counter = 1
+        current = self.head
+        if position < 1:
+            return None
+        while current and counter <= position:
+            if counter == position:
+                return current
+            current = current.next
+            counter += 1
+        return None
+
+    def insert(self, new_element, position):
+        """Insert a new node at the given position.
+        Assume the first position is "1".
+        Inserting at position 3 means between
+        the 2nd and 3rd elements."""
+        counter = 1
+        current = self.head
+        if position>1:
+            while current and counter<=position:
+                if position==counter:
+                    new_element.next = self.head
+                    self.head = new_element
+                current = current.next
+                counter +=1
+        elif position==1:
+            new_element.next = self.head
+            self.head= new_element
 
 
 # Use push() to construct below
